@@ -1,0 +1,31 @@
+<%= form_for(@menu_item, html: {role: 'form'}) do |f| %>
+  <% if @menu_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@menu_item.errors.count, "error") %> prohibited this menu_item from being saved:</h2>
+
+      <ul>
+      <% @menu_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, rows: 6, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image_url %><br>
+    <%= f.text_field :image_url, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price %><br>
+    <%= f.text_field :price, class: 'form-control' %>
+  </div>
+  <%= f.submit class: 'btn btn-default' %>
+<% end %>

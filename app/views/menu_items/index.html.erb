@@ -1,0 +1,35 @@
+<h1>Listing menu_items</h1>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image url</th>
+            <th>Price</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @menu_items.each do |menu_item| %>
+            <tr>
+                <td><%= menu_item.name %></td>
+                <td><%= menu_item.description %></td>
+                <td><%= link_to(image_tag(menu_item.image_url, class: 'img-thumbnail img-responsive'), menu_item.image_url) %></td>
+                <td><%= menu_item.price %></td>
+                <td><%= link_to 'Show', menu_item %></td>
+                <td><%= link_to 'Edit', edit_menu_item_path(menu_item) %></td>
+                <td><%= link_to 'Destroy', menu_item, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
+
+<br>
+
+<%= link_to 'New Menu item', new_menu_item_path %>
